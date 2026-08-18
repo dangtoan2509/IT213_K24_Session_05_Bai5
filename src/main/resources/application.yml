@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: session05-bai5
+
+  datasource:
+    url: jdbc:h2:mem:session05bai5db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+  ai:
+    openai:
+      api-key: ${OPEN_ROUTER_API_KEY:${GEMINI_API_KEY:YOUR_API_KEY}}
+      base-url: ${OPEN_ROUTER_BASED_URL:https://openrouter.ai/api/v1}
+      chat:
+        options:
+          model: ${OPEN_ROUTER_MODEL:google/gemini-2.5-flash}
+          temperature: 0.2
+
+server:
+  port: 8085
